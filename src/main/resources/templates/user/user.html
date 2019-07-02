@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/css/bootstrap.min14ed.css" rel="stylesheet">
+<link href="/css/bootstrap-editable.css" rel="stylesheet">
+<link href="/css/font-awesome.min93e3.css" rel="stylesheet">
+<link href="/css/animate.min.css" rel="stylesheet">
+<link href="/css/style.min862f.css" rel="stylesheet">
+<link href="/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+<link href="/css/plugins/ztree/metro.css" rel="stylesheet">
+<link href="/css/plugins/sidemenu/BootSideMenu.css" rel="stylesheet" >
+<link href="/css/table-fix.css" rel="stylesheet">7
+<script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/js/script/system/sample/sample.js" type="text/javascript"></script>
+<script src="/js/bootstrap-table-editable.js" type="text/javascript"></script>
+<script src="/js/bootstrap-editable.js"></script>
+<!-- <script src="/bootstrap/js/fileinput.min.js"></script> -->
+<script src="/js/plugins/layer/layer.js" type="text/javascript"></script>
+<script src="/js/plugins/pace/pace.min.js" type="text/javascript"></script>
+<script src="/js/plugins/jquery.form.js" type="text/javascript"></script>
+<script src="/js/plugins/validate/jquery.validate.min.js" type="text/javascript"></script>
+<script src="/js/plugins/validate/messages_zh.min.js" type="text/javascript" ></script>
+<script src="/js/plugins/bootstrap-table/bootstrap-table.min.js" type="text/javascript"></script>
+<script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js" type="text/javascript"></script>
+<script src="/js/plugins/ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+<script src="/js/plugins/layer/laydate/laydate.js" type="text/javascript"></script>
+<script src="/js/plugins/sidemenu/BootSideMenu.js" type="text/javascript"></script>
+<script src="/js/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<script src="/js/strutil.js"></script>
+<script src="/js/jsUtil.js"></script>
+<script type="text/javascript" th:src="@{~/js/script/system/user/user.js}"></script>
+
+<title>Jeso-欢迎使用</title>
+<!-- <style type="text/css">
+.fixed-table-container thead th .sortable{ 
+background:url(../img/sort_both.png) no-repeat center right;
+background-position:80% 50%;
+}
+.th-inner.sortable.both.asc{
+background:url(../img/sort_asc.png) no-repeat center right;
+background-position:80% 50%;
+}
+.th-inner.sortable.both.desc{
+background:url(../img/sort_desc.png) no-repeat center right;
+background-position:80% 50%;
+}
+</style> -->
+</head>
+<body class="gray-bg">
+    <!-- <div th:include="templates/inc::incJs"></div> -->
+<div class="wrapper wrapper-content ">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title" >
+                    <div style="float: left;color: black;">查询条件</div>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up" style="color: black;"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form id="formSearch" class="form-horizontal">
+				    	<div class="form-group" >
+				      		<label class="control-label col-sm-1" for="txt_search_departmentname">登录名</label>
+				      		<div class="col-sm-2">
+				       			<input type="text" class="form-control" id="account">
+				      		</div>
+				      		<label class="control-label col-sm-1" for="txt_search_statu">姓名</label>
+				      		<div class="col-sm-2">
+				       			<input type="text" class="form-control" id="username">
+				      		</div>
+				    
+				      		 <label class="control-label col-sm-1" for="txt_search_statu">状态</label>
+				      		<div class="col-sm-2">
+				       			<select class="form-control" id="islocked" name="islocked">
+                             		<option value=""></option>
+                                     <option value="0">启用</option>
+                                     <option value="1">禁用</option>
+                                 </select>
+				      		</div> 
+				      		<div class="col-sm-1">
+                    			<button onclick="query();" type="button" class="btn btn-primary btn-sm" ><span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查询</button>
+				      		</div>
+				      		<div class="col-sm-1">
+                    			<button onclick="resetForm();" type="button" class="btn btn-default btn-sm" ><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> 重置</button>
+				      		</div>
+				     	</div>
+				     </form>
+                </div>
+           </div>
+     	</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 ">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title" >
+                    <div style="float: left;margin-top: -5px;margin-left: -15px;">
+					   	<btn:permission type="0" code="1010102">
+		     				<button id="btn_add" onclick="add();" type="button" class="btn btn-sm btn-link" ><span class="glyphicon glyphicon-plus" aria-hidden="true"> </span> <b>新增</b></button>
+		     			</btn:permission>
+		     			<btn:permission type="0" code="1010103">
+		     				<button id="btn_edit" onclick="edit();" type="button" class="btn  btn-sm btn-link" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <b>编辑</b></button>
+		     			</btn:permission>
+		     			<btn:permission type="0" code="1010104">
+		     				<button id="btn_del" onclick="del();" type="button" class="btn btn-sm btn-link" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> <b>删除</b></button>
+		     			</btn:permission>
+		     			<btn:permission type="0" code="1010105">
+		     				<button id="btn_set" onclick="set();" type="button" class="btn btn-sm btn-link" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <b>关联角色</b></button>
+		     			</btn:permission>
+		     			<btn:permission type="0" code="1010106">
+		     				<button id="btn_reset" onclick="reset();" type="button" class="btn btn-sm btn-link" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <b>重置密码</b></button>
+		     			</btn:permission>
+					</div>
+                </div>
+				<div class="ibox-content">
+	            	<table id="usertable" data-mobile-responsive="true"  data-sortable="true" ></table>
+	            </div>
+            </div>
+		</div>
+	</div>
+</div>
+ <script src="<%=basePath%>/js/content.min.js?v=1.0.0"></script>   
+</body>
+</html>

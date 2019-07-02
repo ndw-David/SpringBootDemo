@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buba.mapper.MenuMapper">
+    <insert id="addUser" parameterType="com.buba.model.User">
+    INSERT INTO User(name,author) VALUES (#{name},#{author})
+    </insert>
+    <delete id="deleteUserById" parameterType="int">
+        DELETE FROM User WHERE id=#{id}
+    </delete>
+    <update id="updateUserById" parameterType="com.buba.model.User">
+        UPDATE User set name=#{name},author=#{author} WHERE id=#{id}
+    </update>
+    <select id="getUserById" parameterType="int" resultType="com.buba.model.User">
+        SELECT * FROM User WHERE id=#{id}
+    </select>
+    <select id="getAllUsers" resultType="com.buba.model.User">
+        SELECT * FROM User
+    </select>
+     <select id="queryMenuTreeByUser" resultType="com.buba.model.User">
+        SELECT * FROM User
+    </select>
+     <select id="getAdminMenu"  resultMap="menuResultList">
+        SELECT * FROM t_sys_menu m where m.type in ('0','1') order by m.num
+    </select>
+    <resultMap type="com.buba.model.Menu" id="menuResultList">
+       <id column="id" property="id"/>
+       <result column="menuCode" property="menuCode"/>
+       <result column="menuName" property="menuName"/>
+       <result column="url" property="url"/>
+       <result column="des" property="des"/>
+       <result column="pid" property="pid"/>
+       <result column="type" property="type"/>
+       <result column="num" property="num"/>
+    </resultMap>
+    
+    
+    
+</mapper>

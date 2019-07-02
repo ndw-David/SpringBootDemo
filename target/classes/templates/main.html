@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+<script src="/js/jquery.min.js"></script>
+<link href="/css/bootstrap.min14ed.css" rel="stylesheet"/>
+<link href="/css/font-awesome.min93e3.css" rel="stylesheet"/>
+<link href="/css/animate.min.css" rel="stylesheet"/>
+<link href="/css/style.min862f.css" rel="stylesheet"/>
+<script src="/js/jsUtil.js"></script>
+<script src="/js/script/index.js"></script>
+
+<title>欢迎使用</title>
+
+</head>
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow: hidden">
+	<div id="wrapper">
+		<!--左侧导航开始-->
+		<nav class="navbar-default navbar-static-side" role="navigation" style="background-color:#363636;background-size: cover; ">
+			<div class="nav-close">
+				<i class="fa fa-times-circle"></i>
+			</div>
+			<div class="sidebar-collapse">
+				<ul class="nav" id="side-menu">
+					<li>
+						<div class="dropdown profile-element">
+							<div style="height: 110px;" class="nav-header"></div>
+						</div>
+						<div class="logo-element">SpringBoot</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!--左侧导航结束-->
+		<!--右侧部分开始-->
+		<div id="page-wrapper" class="gray-bg dashbard-1">
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0px;min-height: 50px;background-color:#f66460;">
+					<div class="navbar-header" >
+						<a class="navbar-minimalize minimalize-styl-2" href="#" style="padding: 1px 4px;margin:17px 5px 5px 5px;">
+							<!-- <i class="fa fa-angle-double-left" id="iconid"></i>  -->
+							<img alt="" src="../img/cehua.png">
+						</a>
+						<!-- <form role="search" class="navbar-form-custom" method="post" action="http://www.zi-han.net/theme/hplus/search_results.html">
+                            <div class="form-group">
+                                <input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">
+                            </div>
+                        </form> -->
+					</div>
+					<div style="float: right;margin-top: 17px;margin-right: 20px;">
+						<div style="float: right;"><span class="glyphicon glyphicon-off" aria-hidden="true" style="font-size: 17px;color: white;cursor: pointer;" onclick="exitWin();" title="注销"></span></div>
+						<div style="float: right;margin-right: 25px;"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="font-size: 17px;color: white;" title="帮助"></span></div>
+						<div style="float: right;margin-right: 25px;"><span class="glyphicon glyphicon-user" aria-hidden="true" style="font-size: 16px;color: white;cursor: pointer;" title="个人信息" onclick="changeInfo();"></span></div>
+						
+						
+						<div style="float: right;margin-right: 25px;">
+						<marquee style="WIDTH: 400px; " scrollamount="3" direction="Left">
+						<center style="color: white;">
+						<div id="timeId" style="color: white;float: left;"></div> 您好，欢迎您<div th:text="${session.account}" style="float: left;padding-left: 20px;"></div>
+						</center>
+						</marquee>
+						</div>
+						
+					</div>
+					
+				</nav>
+			</div>
+			<div class="row content-tabs">
+				<button class="roll-nav roll-left J_tabLeft">
+					<i class="fa fa-backward"></i>
+				</button>
+				<nav class="page-tabs J_menuTabs">
+					<div class="page-tabs-content">
+						<a href="javascript:;" class="active J_menuTab"
+							data-id="/sysCommon/home.do"><img alt="" src="../img/home.png" style="margin-top:-3px;margin-right:3px;">首页</a>
+					</div>
+				</nav>
+				<button class="roll-nav roll-right J_tabRight">
+					<i class="fa fa-forward"></i>
+				</button>
+				<div class="btn-group roll-nav roll-right">
+					<button class="dropdown J_tabClose" data-toggle="dropdown">
+						关闭操作<span class="caret"></span>
+					</button>
+					<ul role="menu" class="dropdown-menu dropdown-menu-right">
+						<!-- <li class="J_tabShowActive"><a>定位当前选项卡</a></li>
+						<li class="divider"></li> -->
+						<li class="J_tabCloseAll"><a>关闭全部选项卡</a></li>
+						<li class="J_tabCloseOther"><a>关闭其他选项卡</a></li>
+					</ul>
+				</div>
+				<!-- <a class="roll-nav roll-right J_tabExit" onclick="exitWin();"><i
+					class="fa fa fa-sign-out"></i> 退出</a> -->
+			</div>
+			<div class="row J_mainContent" id="content-main">
+				<iframe class="J_iframe" name="iframe" width="100%" height="100%"
+					src="/sysCommon/home.do" frameborder="0"
+					data-id="/sysCommon/home.do" seamless></iframe>
+			</div>
+		</div>
+		<!--右侧部分结束-->
+		<!--右侧边栏开始-->
+		<!--右侧边栏结束-->
+	</div>
+
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="/js/plugins/layer/layer.js"></script>
+	<script src="/js/hplus.min.js?v=4.1.0"></script>
+	<script src="/js/contabs.min.js"></script>
+	<script src="/js/plugins/pace/pace.min.js"></script>
+	
+</body>
+</html>
